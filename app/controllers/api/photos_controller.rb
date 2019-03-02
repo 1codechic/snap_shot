@@ -20,4 +20,15 @@ class Api::PhotosController < ApplicationController
     @photo.save
     render 'show.json.jbuilder'
   end
+
+  def update
+    photo_id = params[:id]
+    @photo = Photo.find_by(id: photo_id)
+    @photo.update(
+      name: params[:input_name],
+      width: params[:input_width],
+      height: params[:input_height]
+      )
+    render 'show.json.jbuilder'
+  end
 end
