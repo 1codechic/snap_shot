@@ -31,4 +31,11 @@ class Api::PhotosController < ApplicationController
       )
     render 'show.json.jbuilder'
   end
+
+  def destroy
+    photo_id = params[:id]
+    @photo = Photo.find_by(id: photo_id)
+    @photo.destroy
+    render 'show.json.jbuilder'
+  end
 end
